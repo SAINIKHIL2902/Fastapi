@@ -13,6 +13,10 @@ env/
 .env
 .env.local
 *.env
+*token*
+*.token
+.github_token
+github_token.txt
 
 # IDE & OS files
 .DS_Store
