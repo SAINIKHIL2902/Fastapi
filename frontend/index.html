@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FastAPI Engineering Accelerator — 4–5 Months to Mastery</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Header -->
+  <header class="navbar">
+    <div class="logo-area">
+      <div class="logo-badge">⚡</div>
+      <div>
+        <div class="logo-title">fastapi_accelerator</div>
+        <div class="logo-subtitle">4–5 Month Production Engineering Platform</div>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="#curriculum" class="nav-btn active">Curriculum</a>
+      <a href="#editor-section" class="nav-btn">Exercise Sandbox</a>
+      <a href="/docs" target="_blank" class="nav-btn docs-btn">Swagger /docs ↗</a>
+    </div>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="hero-banner">
+    <div class="tag-pill">22-WEEK INTENSIVE SYLLABUS • 6 PRODUCTION PROJECTS</div>
+    <h1>Simulate 3 Years of Backend Experience</h1>
+    <p>
+      From asynchronous event loops and Pydantic V2 to distributed microservices,
+      Kafka streaming, WebSockets, OpenTelemetry, and zero-downtime cloud deployments.
+    </p>
+  </section>
+
+  <!-- Main Container -->
+  <main class="main-container">
+    <!-- Left: Curriculum Modules List -->
+    <section id="curriculum" class="modules-column">
+      <div class="section-title">
+        <span>📚</span>
+        <h2>22-Week Engineering Sprints</h2>
+      </div>
+      <div id="modules-list" class="modules-list">
+        <!-- Injected via JavaScript -->
+        <div class="loading-spinner">Loading curriculum modules...</div>
+      </div>
+    </section>
+
+    <!-- Right: Active Exercise & Interactive Code Sandbox -->
+    <section id="editor-section" class="sandbox-column">
+      <div class="section-title">
+        <span>💻</span>
+        <h2>Interactive Coding Sandbox</h2>
+      </div>
+
+      <div class="card sandbox-card">
+        <div class="exercise-header">
+          <div>
+            <span id="active-mod-tag" class="pill pill-purple">Module 01</span>
+            <h3 id="exercise-title">Exercise 1: Create Asynchronous Health Endpoint</h3>
+          </div>
+          <span id="evaluation-badge" class="badge">Awaiting Submission</span>
+        </div>
+
+        <p id="exercise-instructions" class="exercise-desc">
+          Define an asynchronous GET endpoint at <code>/health</code> that returns a JSON response
+          <code>{'status': 'healthy', 'code': 200}</code>.
+        </p>
+
+        <!-- Code Editor Area -->
+        <div class="editor-header">
+          <span class="file-name">solution.py</span>
+          <button id="reset-code-btn" class="text-btn">Reset Starter Code</button>
+        </div>
+        <textarea id="code-editor" spellcheck="false" class="code-textarea"></textarea>
+
+        <!-- Action Controls -->
+        <div class="editor-footer">
+          <span id="status-msg" class="status-msg">Press Submit to test against automated unit assertions.</span>
+          <button id="submit-code-btn" class="submit-btn">
+            <span>⚡ Run & Submit Solution</span>
+          </button>
+        </div>
+
+        <!-- Terminal Output Window -->
+        <div class="terminal-window">
+          <div class="terminal-bar">
+            <div class="terminal-dots">
+              <span class="dot dot-red"></span>
+              <span class="dot dot-yellow"></span>
+              <span class="dot dot-green"></span>
+            </div>
+            <span class="terminal-title">Execution Console Output</span>
+          </div>
+          <pre id="terminal-output" class="terminal-body">Run your solution above to see automated test results.</pre>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>FastAPI Accelerated Engineering Platform • Built for Intensive Hands-on Mastery</p>
+  </footer>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

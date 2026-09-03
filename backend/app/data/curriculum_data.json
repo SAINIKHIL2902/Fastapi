@@ -1,0 +1,168 @@
+{
+  "curriculum": {
+    "title": "Accelerated FastAPI Engineering Program",
+    "duration_weeks": 22,
+    "total_modules": 8,
+    "modules": [
+      {
+        "id": "m01",
+        "title": "Module 01: Foundations, ASGI & Pydantic V2",
+        "weeks": "Weeks 1–3",
+        "difficulty": "Beginner to Intermediate",
+        "description": "Master Python async/await concurrency, event loop mechanics, ASGI vs WSGI, and strict Pydantic V2 data validation schemas.",
+        "project": "Project A: Todo & Task Management REST API",
+        "topics": [
+          "Asyncio, coroutines, and event loop starvation",
+          "ASGI specification & Uvicorn architecture",
+          "FastAPI routing with Radix tree matching",
+          "Pydantic V2 BaseModel, Field, and custom validators",
+          "Dependency injection with Depends"
+        ],
+        "exercises": [
+          {
+            "id": "ex01",
+            "title": "Exercise 1: Create Asynchronous Health Endpoint",
+            "instructions": "Define an asynchronous GET endpoint at /health that returns a JSON response {'status': 'healthy', 'code': 200}.",
+            "starter_code": "from fastapi import FastAPI\n\napp = FastAPI()\n\n# Implement your endpoint here\n",
+            "solution_hint": "Use @app.get('/health') async def health_check(): return {'status': 'healthy', 'code': 200}"
+          },
+          {
+            "id": "ex02",
+            "title": "Exercise 2: Validate User Payload with Pydantic",
+            "instructions": "Create a UserSchema with email (must contain '@') and age (must be >= 18). Implement POST /users returning 201 Created.",
+            "starter_code": "from fastapi import FastAPI, status\nfrom pydantic import BaseModel, Field\n\napp = FastAPI()\n\n# Define UserSchema and POST /users\n",
+            "solution_hint": "class UserSchema(BaseModel): email: str; age: int = Field(ge=18)"
+          }
+        ]
+      },
+      {
+        "id": "m02",
+        "title": "Module 02: Relational Databases, Async SQLAlchemy & Alembic",
+        "weeks": "Weeks 4–6",
+        "difficulty": "Intermediate",
+        "description": "Connect PostgreSQL with asyncpg, manage connection pooling, execute ACID transactions, and handle migrations with Alembic.",
+        "project": "Project B: Relational Task Manager with Alembic",
+        "topics": [
+          "PostgreSQL architecture & WAL logs",
+          "Async SQLAlchemy 2.0 DeclarativeBase",
+          "Connection pool tuning (QueuePool) & PgBouncer",
+          "Alembic autogenerate & zero-downtime migrations",
+          "Index optimization with EXPLAIN (ANALYZE, BUFFERS)"
+        ],
+        "exercises": [
+          {
+            "id": "ex03",
+            "title": "Exercise 3: Async Session Dependency",
+            "instructions": "Implement a get_db dependency yielding an AsyncSession with proper exception handling and session close in a finally block.",
+            "starter_code": "from typing import AsyncGenerator\n\nasync def get_db() -> AsyncGenerator:\n    # Implement database session generator\n    pass\n",
+            "solution_hint": "async with AsyncSessionLocal() as session: try: yield session finally: await session.close()"
+          }
+        ]
+      },
+      {
+        "id": "m03",
+        "title": "Module 03: Authentication, OAuth2, JWT & RBAC",
+        "weeks": "Weeks 7–9",
+        "difficulty": "Advanced",
+        "description": "Implement enterprise security with password hashing (bcrypt), signed JWT access & refresh tokens, and Role-Based Access Control.",
+        "project": "Project C: Multi-Tenant Auth & Billing Service",
+        "topics": [
+          "Salting and hashing with bcrypt/argon2",
+          "JWT claims, expiration, and refresh token rotation",
+          "Role-based permission guards",
+          "Token revocation and Redis blacklisting",
+          "Defenses against IDOR and OWASP API Top 10"
+        ],
+        "exercises": [
+          {
+            "id": "ex04",
+            "title": "Exercise 4: JWT Token Generator",
+            "instructions": "Write a function create_access_token(data: dict, expires_delta: int) that encodes a signed JWT with HS256 algorithm.",
+            "starter_code": "from jose import jwt\nfrom datetime import datetime, timedelta\n\nSECRET_KEY = 'secret'\nALGORITHM = 'HS256'\n\ndef create_access_token(data: dict, expires_minutes: int = 15) -> str:\n    # Implement JWT encoding\n    pass\n",
+            "solution_hint": "to_encode = data.copy(); to_encode.update({'exp': datetime.utcnow() + timedelta(minutes=expires_minutes)}); return jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)"
+          }
+        ]
+      },
+      {
+        "id": "m04",
+        "title": "Module 04: Asynchronous Task Queues & Workers",
+        "weeks": "Weeks 10–12",
+        "difficulty": "Advanced",
+        "description": "Offload long-running I/O and compute workloads to Celery and Redis workers with idempotency keys and exponential backoff.",
+        "project": "Project D: Resilient Media Processing Pipeline",
+        "topics": [
+          "FastAPI BackgroundTasks vs Celery",
+          "Redis & RabbitMQ broker configurations",
+          "Idempotency keys to prevent duplicate transactions",
+          "Task acknowledgment (ack_late) and dead-letter queues",
+          "Direct-to-S3 pre-signed upload URLs"
+        ],
+        "exercises": []
+      },
+      {
+        "id": "m05",
+        "title": "Module 05: Event-Driven Microservices & Outbox Pattern",
+        "weeks": "Weeks 13–15",
+        "difficulty": "Senior",
+        "description": "Decompose monoliths into distributed services communicating via asynchronous event buses, outbox tables, and circuit breakers.",
+        "project": "Project E: Event-Driven Order Processing Microservices",
+        "topics": [
+          "Domain-Driven Design (DDD) boundaries",
+          "Transactional Outbox Pattern with PostgreSQL",
+          "RabbitMQ / Kafka topic partitioning",
+          "Circuit breaker pattern and resilience",
+          "Consumer contract testing with Pact"
+        ],
+        "exercises": []
+      },
+      {
+        "id": "m06",
+        "title": "Module 06: Real-Time WebSockets & Streaming Responses",
+        "weeks": "Weeks 16–17",
+        "difficulty": "Senior",
+        "description": "Build high-concurrency WebSocket gateways and Server-Sent Events (SSE) for real-time generative AI token streaming.",
+        "project": "Project E+: Distributed Real-time Notification Gateway",
+        "topics": [
+          "WebSocket protocol handshake & full-duplex framing",
+          "Connection manager with heartbeat pings",
+          "Multi-node scaling with Redis Pub/Sub",
+          "Server-Sent Events (SSE) for LLM token streaming",
+          "File descriptor leak prevention under connection churn"
+        ],
+        "exercises": []
+      },
+      {
+        "id": "m07",
+        "title": "Module 07: Observability, Metrics & Telemetry",
+        "weeks": "Weeks 18–19",
+        "difficulty": "Senior",
+        "description": "Instrument APIs with Prometheus metrics, OpenTelemetry distributed tracing, and structured JSON correlation logging.",
+        "project": "Observability Stack Integration",
+        "topics": [
+          "RED Method (Rate, Errors, Duration)",
+          "Prometheus latency histograms & Grafana dashboards",
+          "OpenTelemetry context propagation & Jaeger spans",
+          "Structured JSON logging with request correlation IDs",
+          "Automated Sentry error capture & alerting"
+        ],
+        "exercises": []
+      },
+      {
+        "id": "m08",
+        "title": "Module 08: Cloud, CI/CD & Capstone Production Deployment",
+        "weeks": "Weeks 20–22",
+        "difficulty": "Staff / Lead",
+        "description": "Deploy an enterprise SaaS / AI API to the cloud using Terraform, Docker, and GitHub Actions with zero downtime.",
+        "project": "Project F: Enterprise Capstone SaaS Platform",
+        "topics": [
+          "Multi-stage Docker builds & non-root hardening",
+          "GitHub Actions CI/CD matrix runner & security gates",
+          "Infrastructure as Code with Terraform",
+          "Secrets management with AWS Secrets Manager / Vault",
+          "Zero-downtime rolling deployments & rollback runbooks"
+        ],
+        "exercises": []
+      }
+    ]
+  }
+}
